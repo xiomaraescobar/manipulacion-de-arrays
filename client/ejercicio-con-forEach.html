@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task List</title>
+    <style>
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Tareas</h1>
+    <div id="list"></div>
+    <script>
+        const tasks = [
+            { title: 'Read', time: 1 },
+            { title: 'Walk', time: 30 },
+            { title: 'Meditate', time: 30 },
+        ];
+
+        const list = document.getElementById('list');
+
+        tasks.forEach((task, index) => {
+            const listItem = document.createElement('li');
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.id = `task-${index}`;
+            checkbox.addEventListener('change', (event) => {
+                if (event.target.checked) {
+                    listItem.classList.add('completed');
+                } else {
+                    listItem.classList.remove('completed');
+                }
+            });
+
+            const label = document.createElement('label');
+            label.htmlFor = `task-${index}`;
+            label.textContent = `${task.title} - ${task.time} minutos`;
+
+            listItem.appendChild(checkbox);
+            listItem.appendChild(label);
+            list.appendChild(listItem);
+        });
+    </script>
+</body>
+</html>
