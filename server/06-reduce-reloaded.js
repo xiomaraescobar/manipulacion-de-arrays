@@ -48,3 +48,4 @@ const rta1 = data
     return obj;
 },  {});
 console.log(rta1);
+
